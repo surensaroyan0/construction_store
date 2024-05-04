@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuildSupply Co</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}/css/home.css">
+</head>
+<body>
+    <header>
+        <div class="size">
+            <div class="around">
+                <div class="header_box logo">
+                    <h1><a href="/api/home/">BuildSupply Co</a></h1>
+                </div>
+                <div class="header_box menu">
+                    <nav>
+                        <ul>
+                            <li><a href="/api/about/">About Us</a></li>
+                        {% if store_user %}
+                            <li><a href="/api/cart/">Cart</a></li>
+                            <li><a href="/api/orders/">Orders</a></li>
+                            <li><a href="/api/user/profile/{{ store_user.id }}/">Profile</a></li>
+                        {% else %}
+                            <li><a href="/api/user/login/">Sign In</a></li>
+                        {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="categories">
+        <div class="size">
+            <div class="search">
+                <form action="/api/home/" method="post">
+                {% csrf_token %}
+                    <input type="text" name="search_query" placeholder="Search" class="search_inp">
+                    <input type="submit" value="Search" class="search_btn">
+                </form>
+            </div>
+            <nav>
+                <ul>
+                {% for category in categories %}
+                    <li><a href="" name="category">{{ category.name }}</a>
+                        <ul>
+                        {% for subcategory in subcategories %}
+                            {% if subcategory.category == category.name %}
+                            <li><a href="/api/products/{{ category.name }}/{{ subcategory.name }}/" name="subcategory">{{ subcategory.name }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <section class="products">
+        <div class="size">
+            {% if subcategory_name %}
+                <h2 class="products_title">{{ subcategory_name }}</h2>
+            {% else %}
+                <h2 class="products_title">Products</h2>
+            {% endif%}
+            <div class="wrap">
+            {% for product in products %}
+                <div class="product_box">
+                    <a href="/payment/product/{{ product.id }}/"><img src="{{ product.image.url }}"
+                                                                 alt="Product Image" class="product_img"></a>
+                    <h5 class="product_name">{{ product.name }}</h5>
+                    <p id="product_price" class="product_price">{{ product.price }} ֏</p>
+                    <form action="/api/cart/" method="post" class="center">
+                    {% csrf_token %}
+                        <div class="quantity">
+                            <div class="size center">
+                                <p class="decrease-btn">-</p>
+                                <input class="quantityInput" type="number" maxlength="6" value="1"
+                                       data-max="{{ product.quantity_available }}" name="quantity">
+                                <p class="increase-btn">+</p>
+                                <div class="shopping_cart_block">
+                                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                                    <button class="shopping_cart">
+                                        <img src="{{ STATIC_URL }}/img/shopping-cart.png" alt="Shopping cart">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <script src="{{ STATIC_URL }}/js/productQuantity.js"></script>
+</body>
+</html>

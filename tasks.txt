@@ -1,0 +1,75 @@
+1)Crate a new repository on GitHub. +
+2)Initialize a new django project within this repo. +
+3)Create a django app for the main functionality. +
+4)Create docker files for the django project and the PostgreSQL database. +
+5)Configure django settings, including database settings, static files, and templates. +
+6)Define database models for products, users, categories, orders, carts, reviews and API keys. +
+7)Implement all fields and relationship between models(OneToOne or ForeignKey). +
+
+Frontend
+8)Create` +
+about.css
+about.html
+
+home.html, product_detail.html
+home.css, product_detail.css
+
+profile.html, registration.html, login.html
+profile.css, registration.css, login.css
+
+orders.html, order_detail.html, previous_orders.html
+orders.css, order_detail.css, previous_orders.css
+
+cart.html
+cart.css
+
+9)Add all products and categories to db by admin +
+
+Product's view functions
+10)Display list of all products +
+11)Display individual product details include all fields +
+12)Add urls to urls.py file +
+
+Category's view functions
+13)Fetch some categories from db and then display these +
+14)Include search and filters functionality +
+15)Implement sorting options based on various criteria such as price, category, or ???POPULARITY???. +-
+
+User's view functions - 22 april
+16)Profile view for the logged-in user +
+17)Edit user fields +
+18)Change user password -
+19)Register +
+20)Login +
+21)Logout +
+22)Reset password functionality (email notifications) -
+23)Delete user +
+24)Add urls to urls.py file +-
+
+Order's view functions - 25 april
+25)Display all orders
+26)Display specific order's details
+27)Display previous orders
+28)Add urls to urls.py file
+
+Cart's view functions +
+29)Display what in my cart
+30)Add item to cart
+31)Remove item from cart
+32)Add urls to urls.py file
+
+Review's view functions - 25 april
+33)Add review for a product
+34)Edit review
+35)Remove review
+36)Add urls to urls.py file
+
+Security +
+37)Implement authentication functionality.
+38)Connect to view functions.
+39)Write their design.
+
+40)Integrate payment gateways +-
+41)Add Armenian, Russian and English languages - 7 may
+42)Add AMD,RUB,USD,EUR currencies - 12 may
+43)Testing - 18 may

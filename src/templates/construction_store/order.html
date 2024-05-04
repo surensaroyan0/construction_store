@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuildSupply Co</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}/css/order.css">
+</head>
+<body>
+    <header>
+        <div class="size">
+            <div class="around">
+                <div class="header_box logo">
+                    <h1><a href="/api/home/">BuildSupply Co</a></h1>
+                </div>
+                <div class="header_box menu">
+                    <nav>
+                        <ul>
+                            <li><a href="/api/about/">About Us</a></li>
+                        {% if store_user %}
+                            <li><a href="/api/cart/">Cart</a></li>
+                            <li><a href="/api/orders/">Orders</a></li>
+                            <li><a href="/api/user/profile/{{ store_user.id }}/">Profile</a></li>
+                        {% else %}
+                            <li><a href="/api/user/login/">Sign In</a></li>
+                        {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="products">
+        <div class="size">
+        {% if order_items %}
+            <h2 class="products_title">Orders</h2>
+        {% else %}
+            <div class="orders size">
+                <h3 class="orders-empty__title">Your deliveries will be here</h3>
+                <p class="orders-empty__text">Place your order in your cart and check back to see where the items are now.</p>
+                <a class="orders-empty__btn" href="/api/cart/">Go to Cart</a>
+            </div>
+        {% endif %}
+        </div>
+    </section>
+</body>
+</html>

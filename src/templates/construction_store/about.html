@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuildSupply Co</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}/css/about.css">
+</head>
+<body>
+    <header>
+        <div class="size">
+            <div class="around">
+                <div class="header_box logo">
+                    <h1><a href="/api/home/">BuildSupply Co</a></h1>
+                </div>
+                <div class="header_box menu">
+                    <nav>
+                        <ul>
+                            <li><a href="/api/about/">About Us</a></li>
+                        {% if store_user %}
+                            <li><a href="/api/cart/">Cart</a></li>
+                            <li><a href="/api/orders/">Orders</a></li>
+                            <li><a href="/api/user/profile/{{ store_user.id }}/">Profile</a></li>
+                        {% else %}
+                            <li><a href="/api/user/login/">Sign In</a></li>
+                        {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="about">
+        <div class="title_block between right_size">
+            <div class="title_text">
+                <h2 class="about_title">About BuildSupply Co</h2>
+                <p>Welcome to BuildSupply Co, your one-stop shop for high-quality construction materials and tools.
+                    We are committed to providing the best products and services to our customers.</p>
+                <p>Our mission is to simplify the process of sourcing construction supplies, making it easier and more
+                    convenient for builders, contractors, and DIY enthusiasts to find everything they need in one place.</p>
+                <p>With a wide range of products, competitive prices, and excellent customer service, BuildSupply Co is
+                    your trusted partner for successful construction projects.</p>
+            </div>
+            <div class="title_img">
+                <img src="{{ STATIC_URL }}/img/store_pic1.png" alt="">
+            </div>
+        </div>
+
+        <div class="mission_block between left_size">
+            <div class="mission_img">
+                <img src="{{ STATIC_URL }}/img/store_pic2.jpg" alt="">
+            </div>
+            <div class="mission_text">
+                <h3 class="about_mission_title">Our Mission</h3>
+                <ul class="about_mission">
+                    <li>At BuildSupply Co, we are dedicated to simplifying the procurement process for construction materials. </li>
+                    <li>Our mission is to provide a comprehensive platform where customers can find everything they need,
+                        from basic building materials to specialized tools, all in one convenient location.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="vision_block">
+            <div class="vision_background"></div>
+            <h3 class="vision_title">Our Vision</h3>
+            <div class="size between">
+                <div class="vision_1">
+                    <h4>A wide variety</h4>
+                    <p>We offer one of the most diverse selections of construction tools and materials in the region,
+                        meeting the needs of professional builders and individual entrepreneurs.</p>
+
+                    <h4>Product quality</h4>
+                    <p>We carefully select suppliers and guarantee the high quality of each product, which makes our
+                        store a reliable partner for solving construction and repair problems.</p>
+
+                    <h4>Professional approach</h4>
+                    <p>Our team consists of experienced professionals who are ready to provide quality advice and
+                        assistance in choosing the necessary materials and tools.</p>
+                </div>
+                <div class="vision_2">
+                    <h4>Accountability and transparency</h4>
+                    <p>We value the trust of our customers and always maintain high standards of accountability and
+                        transparency in all aspects of our business, including pricing, service and product quality.</p>
+
+                    <h4>Social responsibility</h4>
+                    <p>We support initiatives to improve living conditions in our region and are committed to social
+                        responsibility in all aspects of our business, from our interactions with suppliers to supporting
+                        our local communities.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="apart_block between right_size">
+            <div class="apart_text">
+                <h3 class="about_us-apart_title">What Sets Us Apart</h3>
+                <div class="about_us-apart">
+                    <h4>Wide Range of Products</h4>
+                    <p>
+                        We offer a vast selection of construction materials and tools, ensuring that our customers can
+                        find exactly what they need for any project.
+                    </p>
+
+                    <h4>Quality Assurance</h4>
+                    <p>
+                        We prioritize quality in all our products, partnering with trusted manufacturers to deliver
+                        durable and reliable supplies.
+                    </p>
+
+                    <h4>Competitive Pricing</h4>
+                    <p>
+                        Our commitment to competitive pricing allows our customers to get the best value for their money
+                        without compromising on quality.
+                    </p>
+
+                    <h4>Exceptional Customer Service</h4>
+                    <p>
+                        Our team is dedicated to providing exceptional customer service, offering expert advice, timely
+                        assistance, and a seamless shopping experience.
+                    </p>
+                </div>
+            </div>
+            <div class="apart_img center">
+                <img src="{{ STATIC_URL }}/img/store_pic3.jpg" alt="">
+            </div>
+        </div>
+
+        <div class="thanks_block">
+            <div class="size">
+                <h3 class="thanks_title">Thank you for choosing BuildSupply Co. We look forward to serving you and being a part of your
+                    successful construction projects.</h3>
+            </div>
+        </div>
+
+    </section>
+</body>
+</html>

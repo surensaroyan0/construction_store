@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BuildSupply Co</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <link rel="stylesheet" href="{{ STATIC_URL }}/css/landing.css">
+</head>
+<body>
+    <header>
+        <div class="size">
+            <div class="around">
+                <div class="header_box logo">
+                    <h1><a href="/api/home/">BuildSupply Co</a></h1>
+                </div>
+                <div class="header_box menu">
+                    <nav>
+                        <ul>
+                            <li><a href="/api/about/">About Us</a></li>
+                        {% if store_user %}
+                            <li><a href="/api/cart/">Cart</a></li>
+                            <li><a href="/api/orders/">Orders</a></li>
+                            <li><a href="/api/user/profile/{{ store_user.id }}/">Profile</a></li>
+                        {% else %}
+                            <li><a href="/api/user/login/">Sign In</a></li>
+                        {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="size">
+        {% if store_user %}
+            <div class="product_box">
+                <div class="product_img">
+                    <img src="{{ product.image.url }}">
+                </div>
+                <div class="product_info">
+                    <h5 class="product_name">{{ product.name }}</h5>
+                    <p class="product_specifications">
+                    {% for specification in product.specifications %}
+                        <span>{{ specification }}</span>
+                    {% endfor %}
+                    </p>
+                </div>
+                <div class="price_block">
+                    <p id="product_price" class="product_price">{{ product.price }} ֏</p>
+                    <div class="quantity center">
+                        <p class="decrease-btn">-</p>
+                        <input class="quantityInput" type="number" maxlength="6" value="1"
+                               data-max="{{ product.quantity_available }}" name="quantity">
+                        <p class="increase-btn">+</p>
+                    </div>
+                    <form action="/api/cart/" method="post">
+                    {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <div class="size"><button class="button cart">Add to cart</button></div>
+                    </form>
+                    <form action="/payment/create-checkout-session/{{ product.id }}/" method="post">
+                    {% csrf_token %}
+                        <input type="hidden" name="quantity" id="checkout-quantity" value="1">
+                        <div class="size"><button type="submit" id="checkout-button" class="button">Buy Now</button></div>
+                    </form>
+                </div>
+            </div>
+        {% else %}
+            <p style="color: red">{{ error }}</p>
+        {% endif %}
+    </div>
+
+    <script src="{{ STATIC_URL }}/js/productQuantity.js"></script>
+</body>
+</html>

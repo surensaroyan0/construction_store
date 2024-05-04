@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuildSupply Co</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}/css/cart.css">
+</head>
+<body>
+    <header>
+        <div class="size">
+            <div class="around">
+                <div class="header_box logo">
+                    <h1><a href="/api/home/">BuildSupply Co</a></h1>
+                </div>
+                <div class="header_box menu">
+                    <nav>
+                        <ul>
+                            <li><a href="/api/about/">About Us</a></li>
+                        {% if store_user %}
+                            <li><a href="/api/cart/">Cart</a></li>
+                            <li><a href="/api/orders/">Orders</a></li>
+                            <li><a href="/api/user/profile/{{ store_user.id }}/">Profile</a></li>
+                        {% else %}
+                            <li><a href="/api/user/login/">Sign In</a></li>
+                        {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="products">
+        <div class="size">
+            {% if cart_items %}
+            <h2 class="products_title">SHOPPING CART</h2>
+            <div class="wrap">
+                {% for cart_item in cart_items %}
+                    <div class="product_box">
+                        <a href="/api/product/{{ cart_item.product.id }}/"><img src="{{ cart_item.product.image.url }}"
+                                                                     alt="Product Image" class="product_img"></a>
+                        <h5 class="product_name">{{ cart_item.product.name }}</h5>
+                        <p class="product_price">{{ cart_item.product.price }}֏</p>
+                        <div class="quantity">
+                            <p class="decrease-btn">-</p>
+                            <input class="quantityInput" type="number" maxlength="6" value="{{ cart_item.quantity }}"
+                                   data-max="{{ cart_item.product.quantity_available }}">
+                            <p class="increase-btn">+</p>
+                            <form action="/api/cart/delete/{{ cart_item.product.id }}/" method="post" class="center">
+                            {% csrf_token %}
+                                <input type="hidden" name="product_id" value="{{ cart_item.product.id }}">
+                                <button class="bin">
+                                    <img src="{{ STATIC_URL }}/img/bin.png" alt="Bin">
+                                </button>
+                            </form>
+                        </div>
+                        <form action="/payment/create-checkout-session/{{ cart_item.product.id }}/" method="post">
+                        {% csrf_token %}
+                            <input type="hidden" name="quantity" id="checkout-quantity" value="1">
+                            <div class="size"><button type="submit" id="checkout-button" class="buy_now">Buy Now</button></div>
+                        </form>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="basket size">
+                    <h3 class="basket-empty__title">The cart is still empty</h3>
+                    <p class="basket-empty__text">Visit the main page to select products or find what you need in the search</p>
+                    <a class="basket-empty__btn" href="/api/home/">Go to Main page</a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <script src="{{ STATIC_URL }}/js/productQuantity.js"></script>
+</body>
+</html>

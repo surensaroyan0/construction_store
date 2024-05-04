@@ -1,0 +1,262 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    transition: 0.3s;
+    font-family: "Open Sans", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+button, input {
+    border: none;
+}
+
+.size {
+    width: 85%;
+    margin: auto;
+}
+
+.right_size {
+    width: 92.5%;
+    margin: auto 0 auto auto;
+}
+
+.left_size {
+    width: 92.5%;
+    margin: auto auto auto 0;
+}
+
+.wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.around {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.between {
+    display: flex;
+    justify-content: space-between;
+}
+
+header {
+    width: 100%;
+    height: auto;
+    padding: 20px 0;
+    background: rgb(0,212,255);
+    background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(9,9,121,1) 81%, rgba(2,33,142,1) 100%);
+    position: fixed;
+    top: 0;
+    z-index: 999;
+}
+
+header .header_box {
+    width: 50%;
+    height: auto;
+}
+
+header .logo h1 {
+    user-select: none;
+}
+
+header .logo a {
+    color: #fff;
+}
+
+header .menu nav {
+    width: 100%;
+    height: 100%;
+}
+
+header .menu ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+header .menu ul li {
+    margin: 0 10px;
+}
+
+header .menu ul li a {
+    color:  #fff;
+}
+
+.about {
+    width: 100%;
+    height: auto;
+    margin-top: 150px;
+}
+
+.about_title {
+    font-size: 33px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.about p {
+    margin-bottom: 15px;
+}
+
+.about_mission_title,
+.about_us-apart_title,
+.vision_title {
+    margin: 30px 0;
+    font-size: 28px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.about_mission,
+.about_us-apart {
+    margin-bottom: 20px;
+}
+
+.about_mission p,
+.about_us-apart p {
+    margin-bottom: 10px;
+    line-height: 22px;
+}
+
+.about_us-apart h4,
+.vision h4 {
+    margin: 15px 0;
+    font-weight: bold;
+    color: #333;
+    font-size: 22px;
+}
+
+.title_block .title_text {
+    width: 40%;
+    height: auto;
+}
+
+.title_block .title_img {
+    width: 54%;
+    height: auto;
+}
+
+.title_block .title_img img {
+    width: 100%;
+    height: 100%;
+}
+
+
+.mission_block .mission_img {
+    width: 54%;
+    height: auto;
+}
+
+.mission_block .mission_text {
+    width: 40%;
+    height: auto;
+}
+
+.mission_block .mission_img img {
+    width: 100%;
+    height: auto;
+}
+
+.apart_block {
+    margin-top: 70px;
+}
+
+.apart_block .apart_text {
+    width: 40%;
+    height: auto
+}
+.apart_block .apart_img {
+    width: 55%;
+    height: auto;
+}
+
+.apart_block .apart_img img {
+    width: 100%;
+    height: 100%;
+}
+
+.vision_block {
+    width: 100%;
+    height: auto;
+    padding: 20px 0;
+    margin-top: 70px;
+    position: relative;
+}
+
+.vision_block .vision_background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../img/store_pic4.jpg') center/cover no-repeat;
+    filter: blur(2px);
+    z-index: -1;
+}
+
+.vision_block .vision_1,
+.vision_block .vision_2 {
+    width: 45%;
+    height: auto;
+}
+
+.vision_block .vision_title {
+    text-align: center;
+    color: #fff;
+}
+
+.vision_block .vision_1 h4,
+.vision_block .vision_2 h4 {
+    color: #fff;
+    font-size: 25px;
+    margin-top: 20px;
+}
+
+.vision_block .vision_1 p,
+.vision_block .vision_2 p {
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 10px;
+    opacity: 0.8;
+    line-height: 22px;
+}
+
+.thanks_block {
+    width: 100%;
+    height: auto;
+    background: url('../img/store_pic4.jpg') center/cover no-repeat;
+    padding: 45px 0;
+    margin-top: 70px;
+}
+
+.thanks_block .thanks_title {
+    color: #fff;
+    text-align: center;
+    font-size: 22px;
+}
