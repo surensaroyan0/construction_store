@@ -7,6 +7,7 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, logout
 from django.conf import settings
 from django.views import View
+from django.core.mail import send_mail
 
 from ..models.user import StoreUser
 from ..models.apikey import ApiKey
@@ -46,14 +47,19 @@ class UserView(View):
             email = request.POST["email"]
             password = request.POST["password"]
 
-            user = User.objects.create_user(username=username, password=password)
+            user = User.objects.create_user(username=username, password=password, email=email)
             user.first_name = firstname
             user.last_name = lastname
-            user.email = email
             user.save()
             store_user = StoreUser(user=user)
             store_user.save()
             ApiKey(user=store_user, api_key=''.join(random.choice(string.ascii_letters) for _ in range(16))).save()
+
+            subject = "Something"
+            message = f"Hi {user.username}, thank you for registering in BuildSupply CO."
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [user.email]
+            send_mail(subject, message, email_from, recipient_list)
             return HttpResponseRedirect("/api/user/login/")
 
     @staticmethod

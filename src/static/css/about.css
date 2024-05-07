@@ -99,7 +99,38 @@ header .menu ul {
 }
 
 header .menu ul li {
-    margin: 0 10px;
+    color:  #fff;
+    cursor: pointer;
+    position: relative;
+}
+
+header .menu ul li ul {
+    width: 200%;
+    height: 325%;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+header .menu ul li:hover ul {
+    display: block;
+}
+
+header .menu ul li ul li {
+    border-bottom: 1px solid rgba(0, 0, 0, .4);
+    padding: 5px 0;
+    text-align: center;
+}
+
+header .menu ul li ul li a {
+    color: #333;
+}
+
+header .menu ul li ul li a:hover {
+    color: #000;
 }
 
 header .menu ul li a {

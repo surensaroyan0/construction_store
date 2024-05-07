@@ -12,11 +12,6 @@ html {
     overflow-x: hidden;
 }
 
-body {
-    width: 100%;
-    min-height: 100vh;
-}
-
 a {
     text-decoration: none;
 }
@@ -34,6 +29,16 @@ button, input {
     margin: auto;
 }
 
+.right_size {
+    width: 92.5%;
+    margin: auto 0 auto auto;
+}
+
+.left_size {
+    width: 92.5%;
+    margin: auto auto auto 0;
+}
+
 .wrap {
     display: flex;
     flex-wrap: wrap;
@@ -49,6 +54,11 @@ button, input {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.between {
+    display: flex;
+    justify-content: space-between;
 }
 
 header {

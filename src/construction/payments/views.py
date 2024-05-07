@@ -18,7 +18,7 @@ class CreateCheckoutSessionView(View):
         is_auth, context = auth(request)
         context.update(context_func())
         product = Product.objects.get(pk=kwargs.get('id')).to_dict()
-        product["specifications"] = product["specifications"].replace(".", "").split(", ")
+        product["specifications"] = product["specifications"].replace("․", "").split(", ")
         context["product"] = product
         context["STRIPE_PUBLISHABLE_KEY"]: settings.STRIPE_PUBLISHABLE_KEY
         return render(request, "payment/landing.html", context)

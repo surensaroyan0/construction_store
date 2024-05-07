@@ -29,6 +29,67 @@ button, input {
     margin: auto;
 }
 
+.right_size {
+    width: 92.5%;
+    margin: auto 0 auto auto;
+}
+
+.left_size {
+    width: 92.5%;
+    margin: auto auto auto 0;
+}
+
+.wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.around {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.between {
+    display: flex;
+    justify-content: space-between;
+}* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    transition: 0.3s;
+    font-family: "Open Sans", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+button, input {
+    border: none;
+}
+
+.size {
+    width: 85%;
+    margin: auto;
+}
+
 .wrap {
     display: flex;
     flex-wrap: wrap;
@@ -84,7 +145,38 @@ header .menu ul {
 }
 
 header .menu ul li {
-    margin: 0 10px;
+    color:  #fff;
+    cursor: pointer;
+    position: relative;
+}
+
+header .menu ul li ul {
+    width: 200%;
+    height: 325%;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+header .menu ul li:hover ul {
+    display: block;
+}
+
+header .menu ul li ul li {
+    border-bottom: 1px solid rgba(0, 0, 0, .4);
+    padding: 5px 0;
+    text-align: center;
+}
+
+header .menu ul li ul li a {
+    color: #333;
+}
+
+header .menu ul li ul li a:hover {
+    color: #000;
 }
 
 header .menu ul li a {

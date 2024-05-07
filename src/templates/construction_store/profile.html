@@ -22,7 +22,12 @@
                         {% if store_user %}
                             <li><a href="/api/cart/">Cart</a></li>
                             <li><a href="/api/orders/">Orders</a></li>
-                            <li><a href="/api/user/profile/{{ store_user.id }}/">Profile</a></li>
+                            <li>Profile
+                                <ul>
+                                    <li><a href="/api/user/profile/{{ store_user.id }}/">Settings</a></li>
+                                    <li><a href="/api/user/logout/">Log out</a></li>
+                                </ul>
+                            </li>
                         {% else %}
                             <li><a href="/api/user/login/">Sign In</a></li>
                         {% endif %}
@@ -81,7 +86,7 @@
                     </div>
                 </div>
 
-                <label for="payment">Payment Method:</label>
+                <label for="payment">Card:</label>
                 <input type="text" id="payment" name="payment">
 
                 <input type="submit" value="Save Changes">

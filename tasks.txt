@@ -33,7 +33,7 @@ Product's view functions
 Category's view functions
 13)Fetch some categories from db and then display these +
 14)Include search and filters functionality +
-15)Implement sorting options based on various criteria such as price, category, or ???POPULARITY???. +-
+15)Implement sorting options based on various criteria such as price, category, or POPULARITY. +-
 
 User's view functions - 22 april
 16)Profile view for the logged-in user +
@@ -42,9 +42,9 @@ User's view functions - 22 april
 19)Register +
 20)Login +
 21)Logout +
-22)Reset password functionality (email notifications) -
+22)Reset password functionality (email notifications) +
 23)Delete user +
-24)Add urls to urls.py file +-
+24)Add urls to urls.py file +
 
 Order's view functions - 25 april
 25)Display all orders
@@ -69,7 +69,7 @@ Security +
 38)Connect to view functions.
 39)Write their design.
 
-40)Integrate payment gateways +-
+40)Integrate payment gateways +
 41)Add Armenian, Russian and English languages - 7 may
 42)Add AMD,RUB,USD,EUR currencies - 12 may
 43)Testing - 18 may

@@ -39,6 +39,8 @@ function increaseQuantity(inputElement, max, productPrice, productPriceElem) {
 function updateTotalPrice(quantity, productPrice, productPriceElem) {
     productPriceElem.textContent = productPrice * quantity + ' ֏';
     try {
-        document.getElementById('checkout-quantity').value = quantity;
+        document.querySelectorAll('.checkout-quantity').forEach(element => {
+            element.value = quantity;
+        });
     } catch (TypeError) {}
 }

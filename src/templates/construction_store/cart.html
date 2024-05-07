@@ -20,7 +20,12 @@
                         {% if store_user %}
                             <li><a href="/api/cart/">Cart</a></li>
                             <li><a href="/api/orders/">Orders</a></li>
-                            <li><a href="/api/user/profile/{{ store_user.id }}/">Profile</a></li>
+                            <li>Profile
+                                <ul>
+                                    <li><a href="/api/user/profile/{{ store_user.id }}/">Settings</a></li>
+                                    <li><a href="/api/user/logout/">Log out</a></li>
+                                </ul>
+                            </li>
                         {% else %}
                             <li><a href="/api/user/login/">Sign In</a></li>
                         {% endif %}
@@ -57,7 +62,7 @@
                         </div>
                         <form action="/payment/create-checkout-session/{{ cart_item.product.id }}/" method="post">
                         {% csrf_token %}
-                            <input type="hidden" name="quantity" id="checkout-quantity" value="1">
+                            <input type="hidden" name="quantity"  class="checkout-quantity" value="1">
                             <div class="size"><button type="submit" id="checkout-button" class="buy_now">Buy Now</button></div>
                         </form>
                     </div>
