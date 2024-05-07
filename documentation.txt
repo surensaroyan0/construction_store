@@ -1,0 +1,170 @@
+Project description
+	This documentation outlines the features, functionality, and structure of a Django-based  website to selling construction tools and
+	materials dedicated. The site aims to provide a seamless shopping experience for users interested in purchasing a wide range of
+	construction-related products.
+
+
+Features
+	User Authentication
+	- Registration and login for users to create accounts and access personalized features.
+	- Password reset functionality for user convenience.
+
+	About company
+	- Company Overview: Briefly introduce the company, its history, and its core values.
+	- Mission Statement: Describe the company's mission and how it aligns with providing 
+	  top-notch products and services to customers.
+	- Team Information: Highlight key team members or departments involved in the 
+	  website's development and operations.
+	- Quality Commitment: Emphasize the company's dedication to quality assurance, customer 
+	  satisfaction, and product excellence.
+	- Contact Information: Provide contact details for users to reach out for 
+	  inquiries, feedback, or support.
+
+	Product Catalog
+	- Categorized listings of construction tools and materials for easy navigation.
+	- Detailed product pages with descriptions, images, prices, and specifications.
+	- Product search functionality to quickly find specific items.
+	
+	Shopping Cart
+	- Ability to add products to a cart for later purchase.
+	- Quantity adjustments and removal options within the cart.
+	- Checkout process with shipping and payment information capture.
+	
+	Order Management
+	- Order history and tracking for users to monitor their purchases.
+	- Order confirmation emails with detailed purchase summaries.
+	
+	Payment Integration
+	- Integration with payment gateways for secure and convenient transactions.
+	- Support for multiple payment methods such as credit/debit cards and digital wallets.
+	
+	Security
+	- Implementation of security best practices, including HTTPS, CSRF protection, and user data encryption.
+
+	Email Notifications
+	- Send email notifications for order confirmations, password resets, and other relevant user interactions.
+	
+	Localization
+	- Support multiple languages and currencies.
+	
+Technology Stack
+	- Django Framework: Backend development, routing, and business logic implementation.
+	- HTML/CSS: Frontend design and interactivity.
+	- PostgreSQL: Database management systems for storing product, user, and order information.
+	- Payment Gateway Integration: Integration some payment gateways for secure transactions with Stripe API.
+	- Docker: Containerization for deployment.
+	- Deployment: Deploy with one of these AWS, Heroku, DigitalOcean.
+
+
+Project Structure
+	- Home Page
+	- Product Listings Page
+	- Product Details Page
+	- Cart Page
+	- Checkout Page
+	- User Account Page
+	- About page
+
+	
+Project Functionality
+	- register
+	- login
+	- logout
+	
+	- profile update
+	- product listing
+	- product details
+	
+	- cart
+	- cart management	
+	- checkout - Initiates the checkout process
+	- previous orders
+	- order tracking
+	
+	- product search
+	- filter products
+
+
+Database Models
+	1)Product
+		- category (ForeignKey to Subcategory)
+		- name (CharField)
+		- price (DecimalField)
+		- quantity available (PositiveIntegerField)
+		- images - (ImageField)
+		- specifications (CharField)
+		- description (TextField)
+	2)Category
+		- name (CharField)
+	3)StoreUser
+		- name, lastname, username, password (from User model)
+		- email (CharField)
+		- shipping address (CharField)
+		- phone number (CharField)
+		- profile picture(optional) (ImageField)
+	4)Order
+		- user (ForeignKey StoreUser)
+		- order date (DateTimeField)
+		- total amount (DecimalField)
+		- status (choices - pending, processing, shipped, delivered) - (PositiveIntegerField)
+		- shipping address (CharField)
+	5)Cart
+		- user (ForeignKey StoreUser)
+		- quantity (PositiveIntegerField)
+	6)Review
+		- user (ForeignKey StoreUser)
+		- product (ForeignKey Product)
+		- rating (1-5) (PositiveIntegerField)
+		- comment (CharField)
+		- date posted (DateTimeField)
+	7)ApiKey
+		- user (OneToOneField)
+		- apikey (CharField)
+	8)Subcategory
+		- category (ForeignKey Category)
+		- name (CharField)
+	
+	
+URLS
+	Product URLs:
+		List all products: /products/
+		Detail view for a specific product: /products/<product_id>/
+	
+	Category URLs:
+		List all categories: /categories/
+		Detail view for a specific category: /categories/<category_id>/
+		Add a new category: /categories/add/
+		Edit an existing category: /categories/<category_id>/edit/
+		Delete a category: /categories/<category_id>/delete/
+	
+	User URLs:
+		Profile view for the logged-in user: /profile/
+		Edit user profile: /profile/edit/
+		Change password: /profile/change-password/
+		Login: /accounts/login/
+		Logout: /accounts/logout/
+		Register: /accounts/register/
+	
+	Order URLs:
+		List all orders: /orders/
+		Detail view for a specific order: /orders/<order_id>/
+		Create a new order: /orders/create/
+	
+	Cart URLs:
+		View cart: /cart/
+		Add item to cart: /cart/add/<product_id>/
+		Remove item from cart: /cart/remove/<product_id>/
+		Update cart item quantity: /cart/update/<product_id>/
+	
+	Review URLs:
+		Add a review for a product: /products/<product_id>/reviews/add/
+		Edit a review: /reviews/<review_id>/edit/
+		Delete a review: /reviews/<review_id>/delete/
+
+	About URLs:
+		About company's overview
+
+
+Conclusion
+	In conclusion, this documentation describes the comprehensive features, robust functionality, and structured approach of a website
+	for selling construction tools and materials powered by Django.
