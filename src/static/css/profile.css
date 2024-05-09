@@ -24,6 +24,10 @@ button, input {
     border: none;
 }
 
+body {
+    position: relative;
+}
+
 .size {
     width: 85%;
     margin: auto;
@@ -270,4 +274,74 @@ input[type="submit"]:hover {
 
 .profile-pic .-label:hover span {
     display: block;
+}
+
+.payment_card {
+    color: #00d4ff;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.payment_block {
+    width: 600px;
+    height: auto;
+    background-color: #fff;
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 39px 40px, rgba(255, 255, 255, 0.12) 0px -12px 30px,
+        rgba(255, 255, 255, 0.12) 0px 4px 6px, rgba(255, 255, 255, 0.17) 0px 12px 13px,
+        rgba(255, 255, 255, 0.09) 0px -3px 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -75%);
+    z-index: 5;
+    padding: 25px 0;
+    border-radius: 15px;
+    display: none;
+}
+
+.block {
+    display: block
+}
+
+.payment_block label {
+    color: #00d4ff;
+}
+
+.payment_block input {
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.payment_block input[type="submit"] {
+    display: block;
+    margin: 0 0 0 auto;
+}
+
+.background_grey {
+    background-color: rgba(51, 51, 51, 0.8);
+    pointer-events: none;
+}
+
+.payment_block {
+    pointer-events: auto;
+}
+
+#closePaymentForm {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: red;
+    padding: 5px 10px;
+    border-radius: 0 15px 0 15px;
+}
+
+.expiration {
+    color: red;
+    margin-bottom: 10px;
 }

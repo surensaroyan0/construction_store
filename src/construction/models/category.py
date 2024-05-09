@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.db import models
 
 
-class Categorie(models.Model):
+class Category(models.Model):
     name = models.CharField(max_length=50)
 
     def to_dict(self):
@@ -14,8 +14,11 @@ class Categorie(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = "Categories"
 
-@admin.register(Categorie)
+
+@admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ["id", "name"]
     list_filter = ["name"]

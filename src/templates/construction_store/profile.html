@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}/css/profile.css">
     <title>BuildSupply Co</title>
 </head>
-<body>
+<body id="body">
     <header>
         <div class="size">
             <div class="around">
@@ -41,7 +41,7 @@
 {% if error_message %}
     <p class="error">{{ error_message }}</p>
 {% else %}
-    <div class="form_parent">
+    <section class="form_parent">
         <form action="/api/user/profile/{{ store_user.id }}/" method="post" enctype="multipart/form-data">
         {% csrf_token %}
             <div class="size">
@@ -75,32 +75,93 @@
                 <div class="gender">
                     <label>Gender:</label>
                     <div class="male">
-                        <input type="radio" name="gender"
+                        <input type="radio" name="gender" id="male"
                                {% if store_user.gender == "Male" %}checked{% endif %} value="1">
-                        <label>Male</label>
+                        <label for="male">Male</label>
                     </div>
                     <div class="female">
-                        <input type="radio" name="gender"
+                        <input type="radio" name="gender" id="female"
                                {% if store_user.gender == "Female" %}checked{% endif %} value="2">
-                        <label>Female</label>
+                        <label for="female">Female</label>
                     </div>
                 </div>
 
-                <label for="payment">Card:</label>
-                <input type="text" id="payment" name="payment">
+                <p class="payment_card" id="payment_card">+ Add payment card</p>
 
                 <input type="submit" value="Save Changes">
-
-                <a href="/api/user/profile/{{ store_user.id }}/delete/" class="delete_user">Delete User</a>
             </div>
         </form>
-    </div>
+        <form id="paymentForm" class="payment_block" action="/api/payment-card/" method="post">
+        {% csrf_token %}
+            <div class="size">
+                <p id="closePaymentForm">X</p>
+                {% if expiration %}
+                    <p class="expiration">{{ expiration }}</p>
+                {% endif %}
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" id="cardNumber" name="card_number" placeholder="Enter card number" maxlength="19" required>
+
+                <label for="cardholderName">Cardholder Name:</label>
+                <input type="text" id="cardholderName" name="cardholder_name" placeholder="Enter cardholder name" required>
+
+                <label for="expirationMonth">Expiration Month:</label>
+                <input type="text" id="expirationMonth" name="expiration_month" placeholder="MM" maxlength="2" required>
+                <label for="expirationYear">Expiration Year:</label>
+                <input type="text" id="expirationYear" name="expiration_year" placeholder="YYYY" maxlength="4" required>
+
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" placeholder="CVV" maxlength="3" required>
+
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </section>
 {% endif %}
     <script>
+        const card = document.getElementById('payment_card');
+        const paymentForm = document.getElementById('paymentForm');
+        const body = document.getElementById('body');
+        const closePayment = document.getElementById('closePaymentForm');
+        const cardNumber = document.getElementById('cardNumber');
+
         var loadFile = function (event) {
             var image = document.getElementById("output");
             image.src = URL.createObjectURL(event.target.files[0]);
         };
+
+        card.addEventListener('click', () => {
+            paymentForm.classList.toggle('block');
+            body.classList.toggle('background_grey');
+        });
+
+        closePayment.addEventListener('click', (event) => {
+            event.preventDefault();
+            paymentForm.classList.remove('block');
+            body.classList.remove('background_grey');
+        });
+
+        cardNumber.addEventListener('input', function(event) {
+            let value = event.target.value.replace(/\s/g, '');
+            value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+            event.target.value = value;
+        });
+
+        cardNumber.addEventListener('keydown', function(event) {
+            const key = event.key;
+            if (key == 'Backspace' || key == 'Delete') {
+                const selectionStart = event.target.selectionStart;
+                const selectionEnd = event.target.selectionEnd;
+                const value = event.target.value;
+
+                if (selectionStart === selectionEnd) {
+                    event.preventDefault()
+                    event.target.setSelectionRange(selectionStart - 1, selectionStart - 1);
+                } else if (key === 'Delete' && value.charAt(selectionStart) === ' ') {
+                    event.preventDefault()
+                    event.target.setSelectionRange(selectionStart + 1, selectionStart + 1);
+                }
+            }
+        });
     </script>
 </body>
 </html>

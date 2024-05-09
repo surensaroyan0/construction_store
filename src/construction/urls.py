@@ -9,6 +9,7 @@ from .api.profile import ProfileDetailView
 from .api.cart import CartView
 from .api.about import AboutView
 from .api.order import OrderView
+from .api.payment_card import PaymentCardView
 
 
 urlpatterns = [
@@ -22,7 +23,7 @@ urlpatterns = [
     path('api/user/register/', UserView.register, name="register"),
     path('api/user/logout/', UserView.log_out),
 
-    path('api/user/profile/<int:id>/', ProfileDetailView.as_view()),
+    path('api/user/profile/<int:id>/', ProfileDetailView.as_view(), name="profile"),
     path('api/user/profile/<int:id>/delete/', ProfileDetailView.delete, name="delete_profile"),
 
     path('api/cart/', CartView.as_view(), name="cart"),
@@ -31,4 +32,6 @@ urlpatterns = [
     path('api/about/', AboutView.as_view(), name="about"),
 
     path('api/orders/', OrderView.as_view(), name="order"),
+
+    path('api/payment-card/', PaymentCardView.as_view(), name="add_card")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

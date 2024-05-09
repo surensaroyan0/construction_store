@@ -2,11 +2,11 @@ from django.contrib import admin
 from django.db import models
 from django.db.models import JSONField
 
-from .subcategory import Subcategorie
+from .subcategory import Subcategory
 
 
 class Product(models.Model):
-    subcategory = models.ForeignKey(Subcategorie, on_delete=models.CASCADE)
+    subcategory = models.ForeignKey(Subcategory, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     price = models.IntegerField()
     quantity_available = models.PositiveIntegerField()

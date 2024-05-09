@@ -42,7 +42,7 @@ User's view functions - 22 april
 19)Register +
 20)Login +
 21)Logout +
-22)Reset password functionality (email notifications) +
+22)Email notifications +
 23)Delete user +
 24)Add urls to urls.py file +
 

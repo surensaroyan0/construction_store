@@ -4,15 +4,15 @@ from django.shortcuts import render, get_object_or_404
 from django.conf import settings
 
 from ..models.product import Product
-from ..models.category import Categorie
-from ..models.subcategory import Subcategorie
+from ..models.category import Category
+from ..models.subcategory import Subcategory
 from .authentication import auth
 
 
 def category_subcategory():
-    categories = [category.to_dict() for category in Categorie.objects.all()]
+    categories = [category.to_dict() for category in Category.objects.all()]
     subcategories = []
-    for subcategory in Subcategorie.objects.all():
+    for subcategory in Subcategory.objects.all():
         if "/" in subcategory.name:
             subcategory.name = subcategory.name.replace("/", "+")
         subcategories.append(subcategory.to_dict())
@@ -64,8 +64,8 @@ class ProductDetailView(DeleteView):
         if "+" in subcategory:
             subcategory = subcategory.replace("+", "/")
 
-        category = get_object_or_404(Categorie, name=category)
-        subcategory = get_object_or_404(Subcategorie, category=category, name=subcategory)
+        category = get_object_or_404(Category, name=category)
+        subcategory = get_object_or_404(Subcategory, category=category, name=subcategory)
         context["subcategory_name"] = subcategory.name
         products = Product.objects.filter(subcategory=subcategory)
         products = [product.to_dict() for product in products]

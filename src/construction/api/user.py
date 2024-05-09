@@ -28,6 +28,7 @@ class UserView(View):
                 store_user = StoreUser.objects.get(user=user)
                 api_key = ApiKey.objects.get(user=store_user)
 
+                request.session["id"] = store_user.id
                 request.session["username"] = user.username
                 request.session["api_key"] = api_key.api_key
                 return HttpResponseRedirect("/api/home/")

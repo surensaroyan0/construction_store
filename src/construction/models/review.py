@@ -1,27 +1,15 @@
 from django.contrib import admin
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 from .user import StoreUser
 from .product import Product
 
 
 class Review(models.Model):
-    RATING = [
-        (1, '1'),
-        (2, '2'),
-        (3, '3'),
-        (4, '4'),
-        (5, '5'),
-        (6, '6'),
-        (7, '7'),
-        (8, '8'),
-        (9, '9'),
-        (10, '10')
-    ]
-
     user = models.ForeignKey(StoreUser, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    rating = models.PositiveIntegerField(choices=RATING, null=True)
+    rating = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)], null=True)
     comment = models.CharField(max_length=200, default="")
     date_posted = models.DateTimeField(auto_now_add=True)
 

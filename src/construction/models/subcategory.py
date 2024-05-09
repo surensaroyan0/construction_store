@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django.db import models
 
-from .category import Categorie
+from .category import Category
 
 
-class Subcategorie(models.Model):
-    category = models.ForeignKey(Categorie, on_delete=models.CASCADE)
+class Subcategory(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
 
     def to_dict(self):
@@ -18,8 +18,11 @@ class Subcategorie(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = "Subcategories"
 
-@admin.register(Subcategorie)
+
+@admin.register(Subcategory)
 class SubcategoryAdmin(admin.ModelAdmin):
     list_display = ["id", "name"]
     # list_filter = ["category_info"]
