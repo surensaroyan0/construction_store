@@ -1,7 +1,5 @@
 from django.views import View
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.urls import reverse
+from django.shortcuts import render, redirect, reverse
 
 from .authentication import auth
 from .user import StoreUser

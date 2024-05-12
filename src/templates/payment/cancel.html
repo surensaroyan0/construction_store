@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Thanks for your order!</title>
+    <title>Checkout canceled</title>
     <link rel="stylesheet" href="{{ STATIC_URL }}/css/header.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}/css/success.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}/css/cancel.css">
 </head>
 <body>
     <header>
@@ -36,12 +36,7 @@
     </header>
 
     <section>
-        <h2 class="success_title">Your payment was successful!</h2>
-        <p class="success_text">
-            Thank you for your order.
-            If you have any questions, please email -
-            <a href="suren.saroyannn@gmail.com">suren.saroyannn@gmail.com</a>.
-        </p>
+        <p class="cancel_text">Forgot to add something to your cart? <a href="/api/home/">Shop around</a>, then come back to pay!</p>
     </section>
 </body>
 </html>

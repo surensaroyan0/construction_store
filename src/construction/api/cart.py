@@ -2,8 +2,7 @@ from django.views import View
 from django.shortcuts import render
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.shortcuts import redirect
-from django.urls import reverse
+from django.shortcuts import redirect, reverse
 
 from .authentication import auth
 from ..models.cart import Cart
@@ -65,6 +64,7 @@ class CartView(View):
             Cart.objects.get(user=store_user, product=product).delete()
             messages.success(request, "Product removed from cart successfully.")
         except KeyError:
+            messages.error(request, "Product ID not provided.")
             messages.error(request, "Product ID not provided.")
         except Product.DoesNotExist:
             messages.error(request, "Product not found.")
