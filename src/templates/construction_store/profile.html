@@ -100,7 +100,7 @@
 
                 <p class="payment_card" id="payment_card">+ Add payment card</p>
 
-                <input type="submit" value="Save Changes">
+                <input type="submit" value="Update">
             </div>
         </form>
 
@@ -169,7 +169,6 @@
         });
 
         cardNumber.addEventListener('input', function(event) {
-            console.log("yes")
             let value = event.target.value;
             value = value.replace(/\D/g, '');
             value = value.replace(/(\d{4})(?=\d)/g, '$1 ');

@@ -75,11 +75,3 @@ class ProfileDetailView(DetailView):
         store_user.save()
 
         return HttpResponseRedirect(f"/api/user/profile/{kwargs['id']}/")
-
-    @staticmethod
-    def delete(request, *args, **kwargs):
-        store_user = StoreUser.objects.get(pk=kwargs["id"])
-        user_id = store_user.user_id
-        user = User.objects.get(pk=user_id)
-        user.delete()
-        return HttpResponseRedirect("/api/home/")

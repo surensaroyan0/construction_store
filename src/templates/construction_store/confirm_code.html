@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuildSupply Co</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}/css/confirm_code.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}/css/header.css">
+</head>
+<body class="center">
+    <header>
+        <div class="size">
+            <div class="around">
+                <div class="header_box logo">
+                    <h1><a href="/api/home/">BuildSupply Co</a></h1>
+                </div>
+                <div class="header_box menu">
+                    <nav>
+                        <ul>
+                            <li><a href="/api/about/">About Us</a></li>
+                            <li><a href="/api/user/login/">Sign In</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="size">
+            <form action="/api/user/confirm-code/" method="post">
+            {% csrf_token %}
+                <div class="size">
+                    {% if error %}
+                        <p class="error_message">{{ error }}</p>
+                    {% endif %}
+                    <input type="text" placeholder="Your code" name="pin_code" maxlength="6" id="pin_code" required>
+
+                    <input type="submit" value="Send pas code">
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        const pinCode = document.querySelector('#pin_code');
+
+        pinCode.addEventListener('input', function(event) {
+            let value = event.target.value;
+            value = value.replace(/\D/g, '');
+            event.target.value = value;
+        });
+    </script>
+</body>
+</html>

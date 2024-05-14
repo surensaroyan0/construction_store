@@ -57,18 +57,23 @@ input[type="password"] {
     background-color: #0056b3;
 }
 
-.container .not-registered {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+.container .new_account {
+    margin-top: 40px;
+    text-align: center;
 }
 
-.container .not-registered p {
-    font-size: 17px;
+.container .new_account a {
     color: #fff;
+    background-color: #36a420;
+    padding: 15px 22px;
+    border-radius: 5px;
 }
 
-.container .not-registered a {
-    color: #0056b3;
-    margin-left: 10px;
+.forgot_password {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.forgot_password a {
+    color: #0866ff;
 }

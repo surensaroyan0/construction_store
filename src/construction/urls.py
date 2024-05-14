@@ -22,9 +22,12 @@ urlpatterns = [
     path('api/user/login/', UserView.login, name="login"),
     path('api/user/register/', UserView.register, name="register"),
     path('api/user/logout/', UserView.log_out),
+    path('api/user/<int:id>/delete/', UserView.delete, name="delete_profile"),
+    path('api/user/forgot-password/', UserView.forgot_password, name="forgot_password"),
+    path('api/user/confirm-code/', UserView.confirm_code, name="confirm_code"),
+    path('api/user/change-password/', UserView.change_password, name="change_password"),
 
     path('api/user/profile/<int:id>/', ProfileDetailView.as_view(), name="profile"),
-    path('api/user/profile/<int:id>/delete/', ProfileDetailView.delete, name="delete_profile"),
 
     path('api/cart/', CartView.as_view(), name="cart"),
     path('api/cart/delete/<int:product_id>/', CartView.delete, name="delete_product"),

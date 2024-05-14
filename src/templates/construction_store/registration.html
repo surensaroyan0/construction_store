@@ -30,7 +30,7 @@
         <div class="size">
             <h2>Register Here</h2>
             <p class="subtitle">Please fill in the following information</p>
-            <form action="/api/user/register/" method="post">
+            <form action="/api/user/register/" method="post" onsubmit="return isConfirmPassword()">
             {% csrf_token %}
                 <div class="groups">
                     <div class="first-group">
@@ -60,13 +60,17 @@
                         </div>
                         <div class="form-group">
                             <label for="confirm_password">Confirm Password</label>
-                            <input type="password" id="confirm_password" placeholder="Confirm your password" name="confirm_password" required>
+                            <input type="password" id="confirm_password" placeholder="Confirm your password" required>
                         </div>
                     </div>
                 </div>
+                <p id="password_error" class="error_message" style="display: none; margin-top: 10px;">Passwords do not match</p>
+
                 <button type="submit">Sign Up</button>
             </form>
         </div>
     </div>
+
+    <script src="{{ STATIC_URL }}/js/isConfirmPassword.js"></script>
 </body>
 </html>

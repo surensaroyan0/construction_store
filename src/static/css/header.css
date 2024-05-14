@@ -71,6 +71,11 @@ input[type="number"]::-webkit-outer-spin-button {
     justify-content: space-between;
 }
 
+.error_message {
+    color: red;
+    margin-bottom: 10px;
+}
+
 header {
     width: 100%;
     height: auto;
