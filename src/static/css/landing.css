@@ -4,7 +4,6 @@
     margin-top: 150px;
 }
 
-
 .product_img {
     width: 38%;
 }
@@ -91,6 +90,7 @@
 .product_box .quantity button {
     width: 20%;
     height: auto;
+    color: #000;
 }
 
 .product_box form {

@@ -22,6 +22,8 @@ li {
 
 button, input {
     border: none;
+    background-color: transparent;
+    color: #f5f4f2;
 }
 
 body {

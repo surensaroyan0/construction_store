@@ -24,6 +24,7 @@
                         {% if store_user %}
                             <li><a href="/api/cart/">Cart</a></li>
                             <li><a href="/api/orders/">Orders</a></li>
+                            <li><a href="/api/purchases/">Purchases</a></li>
                             <li>Profile
                                 <ul>
                                     <li><a href="/api/user/profile/{{ store_user.id }}/">Settings</a></li>
@@ -44,7 +45,7 @@
         {% if store_user %}
             <div class="product_box">
                 <div class="product_img">
-                    <img src="{{ product.image.url }}">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
                 </div>
                 <div class="product_info">
                     <h5 class="product_name">{{ product.name }}</h5>
@@ -62,12 +63,14 @@
                                data-max="{{ product.quantity_available }}" name="quantity">
                         <p class="increase-btn">+</p>
                     </div>
+                
                     <form action="/api/cart/" method="post">
                     {% csrf_token %}
                         <input type="hidden" name="product_id" value="{{ product.id }}">
                         <input type="hidden" name="quantity" class="checkout-quantity" value="1">
                         <div class="size"><button class="button cart">Add to cart</button></div>
                     </form>
+                
                     <form action="/payment/create-checkout-session/{{ product.id }}/" method="post">
                     {% csrf_token %}
                         <input type="hidden" name="quantity" class="checkout-quantity" value="1">

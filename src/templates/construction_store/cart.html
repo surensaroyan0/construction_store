@@ -6,6 +6,7 @@
     <title>BuildSupply Co</title>
     <link rel="stylesheet" href="{{ STATIC_URL }}/css/cart.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}/css/header.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}/css/products.css">
 </head>
 <body>
     <header>
@@ -18,18 +19,15 @@
                     <nav>
                         <ul>
                             <li><a href="/api/about/">About Us</a></li>
-                        {% if store_user %}
                             <li><a href="/api/cart/">Cart</a></li>
                             <li><a href="/api/orders/">Orders</a></li>
+                            <li><a href="/api/purchases/">Purchases</a></li>
                             <li>Profile
                                 <ul>
                                     <li><a href="/api/user/profile/{{ store_user.id }}/">Settings</a></li>
                                     <li><a href="/api/user/logout/">Log out</a></li>
                                 </ul>
                             </li>
-                        {% else %}
-                            <li><a href="/api/user/login/">Sign In</a></li>
-                        {% endif %}
                         </ul>
                     </nav>
                 </div>
@@ -40,11 +38,11 @@
     <section class="products">
         <div class="size">
             {% if cart_items %}
-            <h2 class="products_title">SHOPPING CART</h2>
-            <div class="wrap">
+                <h2 class="products_title">SHOPPING CART</h2>
+                <div class="wrap">
                 {% for cart_item in cart_items %}
                     <div class="product_box">
-                        <a href="/api/product/{{ cart_item.product.id }}/"><img src="{{ cart_item.product.image.url }}"
+                        <a href="/payment/product/{{ cart_item.product.id }}/"><img src="{{ cart_item.product.image.url }}"
                                                                      alt="Product Image" class="product_img"></a>
                         <h5 class="product_name">{{ cart_item.product.name }}</h5>
                         <p class="product_price">{{ cart_item.product.price }}֏</p>
@@ -53,7 +51,7 @@
                             <input class="quantityInput" type="number" maxlength="6" value="{{ cart_item.quantity }}"
                                    data-max="{{ cart_item.product.quantity_available }}">
                             <p class="increase-btn">+</p>
-                            <form action="/api/cart/delete/{{ cart_item.product.id }}/" method="post" class="center">
+                            <form action="/api/cart/delete/{{ cart_item.product.id }}/" method="post" class="center shopping_bin_block">
                             {% csrf_token %}
                                 <input type="hidden" name="product_id" value="{{ cart_item.product.id }}">
                                 <button class="bin">

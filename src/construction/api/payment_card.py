@@ -46,18 +46,23 @@ class PaymentCardView(View):
             cvv = request.POST["cvv"]
 
             if is_month_expiration(expiration_year, expiration_month):
-                context["error_message"] = is_month_expiration(expiration_year, expiration_month)
+                context["error"] = is_month_expiration(expiration_year, expiration_month)
                 return render(request, "construction_store/profile.html", context)
             elif is_year_expiration(expiration_year):
-                context["error_message"] = is_year_expiration(expiration_year)
+                context["error"] = is_year_expiration(expiration_year)
                 return render(request, "construction_store/profile.html", context)
             elif is_same_card(card_number, username):
-                context["error_message"] = is_same_card(card_number, username)
+                context["error"] = is_same_card(card_number, username)
                 return render(request, "construction_store/profile.html", context)
 
             store_user = StoreUser.objects.get(user__username=username)
+
+            is_main = not Card.objects.filter(user=store_user).exists()
+
             Card.objects.create(user=store_user, card_number=card_number, cardholder_name=cardholder_name,
-                                expiration_month=expiration_month, expiration_year=expiration_year[-2:], cvv=cvv)
+                                expiration_month=expiration_month, expiration_year=expiration_year[-2:],
+                                cvv=cvv, is_main=is_main)
+
             messages.success(request, 'Payment card added successfully.')
         except KeyError:
             messages.error(request, 'Incomplete data. Please fill all required fields.')

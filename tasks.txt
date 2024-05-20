@@ -35,10 +35,10 @@ Category's view functions
 14)Include search and filters functionality +
 15)Implement sorting options based on various criteria such as price, category, or POPULARITY. +-
 
-User's view functions - 22 april
+User's view functions
 16)Profile view for the logged-in user +
 17)Edit user fields +
-18)Change user password -
+18)Change user password +
 19)Register +
 20)Login +
 21)Logout +
@@ -46,7 +46,7 @@ User's view functions - 22 april
 23)Delete user +
 24)Add urls to urls.py file +
 
-Order's view functions - 25 april
+Order's view functions +
 25)Display all orders
 26)Display specific order's details
 27)Display previous orders

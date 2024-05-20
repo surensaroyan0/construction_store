@@ -6,7 +6,7 @@
     <title>BuildSupply Co</title>
     <link rel="stylesheet" href="{{ STATIC_URL }}/css/header.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}/css/products.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}/css/order.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}/css/purchase.css">
 </head>
 <body>
     <header>
@@ -37,19 +37,18 @@
 
     <section class="products">
         <div class="size">
-        {% if order_items %}
-            <h2 class="products_title">Orders</h2>
+        {% if bought_items %}
+            <h2 class="products_title">Purchases</h2>
 
             <div class="wrap">
-                {% for order_item in order_items %}
+                {% for bought_item in bought_items %}
                     <div class="product_box">
-                        <a href="/payment/product/{{ order_item.product.id }}/"><img src="{{ order_item.product.image.url }}"
+                        <a href="/payment/product/{{ bought_item.product.id }}/"><img src="{{ bought_item.product.image.url }}"
                                                                      alt="Product Image" class="product_img"></a>
-                        <h5 class="product_name">{{ order_item.product.name }}</h5>
+                        <h5 class="product_name">{{ bought_item.product.name }}</h5>
                         <div>
-                            <span class="order_quantity">{{ order_item.quantity }} piece{{ order_item.quantity|pluralize }} - </span>
-                            <span class="order_price">{{ order_item.product_price }}֏</span>
-                            <p class="order_status {{ order_item.status|lower }}">{{ order_item.status }}</p>
+                            <span class="order_quantity">{{ bought_item.quantity }} piece{{ bought_item.quantity|pluralize }} - </span>
+                            <span class="order_price">{{ bought_item.product_price }}֏</span>
                         </div>
                     </div>
                 {% endfor %}

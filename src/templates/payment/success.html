@@ -16,18 +16,15 @@
                     <nav>
                         <ul>
                             <li><a href="/api/about/">About Us</a></li>
-                        {% if store_user %}
                             <li><a href="/api/cart/">Cart</a></li>
                             <li><a href="/api/orders/">Orders</a></li>
+                            <li><a href="/api/purchases/">Purchases</a></li>
                             <li>Profile
                                 <ul>
                                     <li><a href="/api/user/profile/{{ store_user.id }}/">Settings</a></li>
                                     <li><a href="/api/user/logout/">Log out</a></li>
                                 </ul>
                             </li>
-                        {% else %}
-                            <li><a href="/api/user/login/">Sign In</a></li>
-                        {% endif %}
                         </ul>
                     </nav>
                 </div>
@@ -40,7 +37,7 @@
         <p class="success_text">
             Thank you for your order.
             If you have any questions, please email -
-            <a href="suren.saroyannn@gmail.com">suren.saroyannn@gmail.com</a>.
+            <a href="">suren.saroyannn@gmail.com</a>.
         </p>
     </section>
 </body>

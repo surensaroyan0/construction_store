@@ -1,34 +1,35 @@
-.products {
-    width: 100%;
-    height: auto;
-    text-align: center;
-    margin: 150px auto;
+.order_quantity {
+    color: #555;
 }
 
-.orders {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.order_price {
+    color: #39e75f;
+    font-weight: 600;
 }
 
-.orders .orders-empty__title {
-    margin-bottom: 12px;
-    font-size: 25px;
+.order_status {
+    font-size: 0.9em;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 3px;
+    display: inline-block;
+    user-select: none;
+    margin-left: 5px;
 }
 
-.orders .orders-empty__text {
-    width: 40%;
-    margin-bottom: 24px;
-    font-size: 16px;
-    line-height: 22px;
-    color: #868695;
-}
-
-.orders .orders-empty__btn {
-    padding: 8px 24px 10px;
-    font-size: 17px;
-    cursor: pointer;
-    background-color: #135fed;
+.order_status.pending {
     color: #fff;
-    border-radius: 20px;
+    background-color: #f0ad4e;
+}
+.order_status.processing {
+    color: #fff;
+    background-color: #5bc0de;
+}
+.order_status.shipped {
+    color: #fff;
+    background-color: #f0ad4e;
+}
+.order_status.delivered {
+    color: #fff;
+    background-color: #5cb85c;
 }

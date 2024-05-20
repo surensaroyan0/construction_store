@@ -33,6 +33,7 @@
             <form action="/api/user/register/" method="post" onsubmit="return isConfirmPassword()">
             {% csrf_token %}
                 <div class="groups">
+                    <p class="error_message">{{ error }}</p>
                     <div class="first-group">
                         <div class="form-group">
                             <label for="firstname">First Name</label>

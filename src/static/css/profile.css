@@ -166,7 +166,7 @@ input[type="submit"]:hover {
     color: #00d4ff;
 }
 
-.payment_block input {
+.form_parent input {
     margin-top: 5px;
     font-size: 14px;
 }

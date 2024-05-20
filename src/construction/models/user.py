@@ -11,7 +11,6 @@ class StoreUser(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_picture = models.ImageField(upload_to="profile", null=True, blank=True)
-    shipping_address = models.CharField(max_length=50)
     phone_number = models.CharField(max_length=50)
     gender = models.PositiveIntegerField(choices=GENDER_CHOICES, null=True)
 
@@ -23,7 +22,6 @@ class StoreUser(models.Model):
             "username": self.user.username,
             "email": self.user.email,
             "profile_picture": self.profile_picture,
-            "shipping_address": self.shipping_address,
             "phone_number": self.phone_number,
             "gender": self.get_gender_display()
         }
@@ -34,7 +32,7 @@ class StoreUser(models.Model):
 
 @admin.register(StoreUser)
 class StoreUserAdmin(admin.ModelAdmin):
-    list_display = ["get_user_info", "shipping_address", "phone_number"]
+    list_display = ["get_user_info", "phone_number", "gender"]
     search_fields = ["get_user_info"]
 
     def get_user_info(self, obj):

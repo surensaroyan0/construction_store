@@ -13,10 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
             updateTotalPrice(parseInt(quantityInput.value), productPrice, productPriceElem)
             decreaseBtn.addEventListener('click', () => decreaseQuantity(quantityInput, productPrice, productPriceElem));
             increaseBtn.addEventListener('click', () => increaseQuantity(quantityInput, maxQuantity, productPrice, productPriceElem));
+            quantityInput.addEventListener('input', () => validQuantityInput(quantityInput, maxQuantity, productPrice, productPriceElem));
         }
     });
 });
-
 
 function decreaseQuantity(inputElement, productPrice, productPriceElem) {
     let currentQuantity = parseInt(inputElement.value);
@@ -43,4 +43,17 @@ function updateTotalPrice(quantity, productPrice, productPriceElem) {
             element.value = quantity;
         });
     } catch (TypeError) {}
+}
+
+function validQuantityInput(inputElement, max, productPrice, productPriceElem) {
+    let value = parseInt(inputElement.value);
+    if (isNaN(value) || value < 1) {
+        inputElement.value = '1';
+        value = 1;
+    } else if (value > max) {
+        inputElement.value = max;
+        value = max;
+    }
+
+    updateTotalPrice(value, productPrice, productPriceElem);
 }

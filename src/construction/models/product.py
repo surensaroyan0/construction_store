@@ -8,23 +8,21 @@ from .subcategory import Subcategory
 class Product(models.Model):
     subcategory = models.ForeignKey(Subcategory, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
-    price = models.IntegerField()
-    quantity_available = models.PositiveIntegerField()
+    price = models.PositiveIntegerField(default=1)
+    quantity_available = models.PositiveIntegerField(default=1)
     specifications = JSONField(null=True, blank=True)
     image = models.ImageField(upload_to="product", null=True, blank=True)
     bought_count = models.IntegerField(default=0)
 
     def to_dict(self):
-        if not self.specifications:
-            self.specifications = ''
         return {
             'id': self.id,
-            'subcategory': self.subcategory,
+            'subcategory': self.subcategory.name,
             'name': self.name,
             'price': self.price,
             'quantity_available': self.quantity_available,
-            'specifications': self.specifications,
-            'image': self.image
+            'specifications': self.specifications if self.specifications else "",
+            'image': self.image if self.image else None
         }
 
     def __str__(self):
@@ -34,9 +32,5 @@ class Product(models.Model):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ["id", "name", "price", "specifications"]
-    search_fields = ["name"]
-    # list_filter = ["subcategory_info"]
-    #
-    # def subcategory_info(self, obj):
-    #     return obj.subcategory.name
-    # subcategory_info.short_description = "Subcategory"
+    search_fields = ["name", "subcategory__name"]
+    list_filter = ["subcategory__name"]

@@ -8,6 +8,7 @@ __pycache__/
 
 env
 /src/construction/models/migrations/
+/src/construction/payments/migrations/
 /src/media/
 /scraping/img/
 # Distribution / packaging

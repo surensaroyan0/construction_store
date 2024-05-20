@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BuildSupply Co</title>
-    <link rel="stylesheet" href="{{ STATIC_URL }}/css/home.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}/css/header.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}/css/products.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}/css/home.css">
 </head>
 <body>
     <header>
@@ -21,6 +22,7 @@
                         {% if store_user %}
                             <li><a href="/api/cart/">Cart</a></li>
                             <li><a href="/api/orders/">Orders</a></li>
+                            <li><a href="/api/purchases/">Purchases</a></li>
                             <li>Profile
                                 <ul>
                                     <li><a href="/api/user/profile/{{ store_user.id }}/">Settings</a></li>
@@ -53,7 +55,7 @@
                         <ul>
                         {% for subcategory in subcategories %}
                             {% if subcategory.category == category.name %}
-                            <li><a href="/api/products/{{ category.name }}/{{ subcategory.name }}/" name="subcategory">{{ subcategory.name }}</a></li>
+                                <li><a href="/api/products/{{ category.name }}/{{ subcategory.name }}/" name="subcategory">{{ subcategory.name }}</a></li>
                             {% endif %}
                         {% endfor %}
                         </ul>
@@ -66,11 +68,10 @@
 
     <section class="products">
         <div class="size">
-            {% if subcategory_name %}
-                <h2 class="products_title">{{ subcategory_name }}</h2>
-            {% else %}
-                <h2 class="products_title">Products</h2>
-            {% endif%}
+            <h2 class="products_title">
+                {% if subcategory_name %} {{ subcategory_name }} {% else %} Products {% endif %}
+            </h2>
+            
             <div class="wrap">
             {% for product in products %}
                 <div class="product_box">

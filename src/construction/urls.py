@@ -10,6 +10,7 @@ from .api.cart import CartView
 from .api.about import AboutView
 from .api.order import OrderView
 from .api.payment_card import PaymentCardView
+from .api.purchase import PurchaseView
 
 
 urlpatterns = [
@@ -23,7 +24,7 @@ urlpatterns = [
     path('api/user/register/', UserView.register, name="register"),
     path('api/user/logout/', UserView.log_out),
     path('api/user/<int:id>/delete/', UserView.delete, name="delete_profile"),
-    path('api/user/forgot-password/', UserView.forgot_password, name="forgot_password"),
+    path('api/user/forgot-password/', UserView.send_message, name="send_message"),
     path('api/user/confirm-code/', UserView.confirm_code, name="confirm_code"),
     path('api/user/change-password/', UserView.change_password, name="change_password"),
 
@@ -36,5 +37,7 @@ urlpatterns = [
 
     path('api/orders/', OrderView.as_view(), name="order"),
 
-    path('api/payment-card/', PaymentCardView.as_view(), name="add_card")
+    path('api/payment-card/', PaymentCardView.as_view(), name="add_card"),
+
+    path('api/purchases/', PurchaseView.as_view(), name="purchase"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

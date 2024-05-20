@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, reverse
+from django.contrib.auth import logout
 
 from .authentication import auth
 from ..models.cart import Cart
@@ -15,6 +16,7 @@ class CartView(View):
         is_auth, context = auth(request)
 
         if not is_auth:
+            logout(request)
             return redirect(reverse('login'))
 
         user = StoreUser.objects.get(user__username=context["store_user"]["username"])
@@ -27,6 +29,7 @@ class CartView(View):
         is_auth, context = auth(request)
 
         if not is_auth:
+            logout(request)
             return redirect(reverse('login'))
 
         try:
@@ -55,6 +58,7 @@ class CartView(View):
         is_auth, context = auth(request)
 
         if not is_auth:
+            logout(request)
             return redirect(reverse('login'))
 
         store_user = StoreUser.objects.get(user__username=context["store_user"]["username"])

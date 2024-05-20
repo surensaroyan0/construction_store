@@ -31,12 +31,10 @@
             <form action="/api/user/confirm-code/" method="post">
             {% csrf_token %}
                 <div class="size">
-                    {% if error %}
-                        <p class="error_message">{{ error }}</p>
-                    {% endif %}
+                    <p class="error_message">{{ error }}</p>
                     <input type="text" placeholder="Your code" name="pin_code" maxlength="6" id="pin_code" required>
 
-                    <input type="submit" value="Send pas code">
+                    <input type="submit" value="Send pin code">
                 </div>
             </form>
         </div>
